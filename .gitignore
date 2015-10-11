@@ -3,3 +3,6 @@
 
 # pyc file
 *.pyc
+
+# virtualenv
+venv/
