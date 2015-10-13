@@ -18,3 +18,4 @@ class Default(object):
 
     # celery configuration
     CELERY_BROKER_URL = 'redis://localhost:6379'
+    CELERY_IMPORTS = ['tasks']
