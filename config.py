@@ -4,6 +4,18 @@
 __author__ = 'jinming'
 
 
+class Config(object):
+    @staticmethod
+    def get_database_uri(**database):
+        return 'postgresql://{user}:{password}@{host}:{port}/{name}'.format(
+            user=database['USER'],
+            password=database['PASSWORD'],
+            host=database['HOST'],
+            port=database['PORT'],
+            name=database['NAME'],
+        )
+
+
 class Default(object):
     # debug mole
     DEBUG = True
@@ -31,13 +43,3 @@ class Default(object):
     CELERY_IMPORTS = ['tasks']
 
 
-class Config(object):
-    @staticmethod
-    def get_database_uri(**database):
-        return 'postgresql://{user}:{password}@{host}:{port}/{name}'.format(
-            user=database['USER'],
-            password=database['PASSWORD'],
-            host=database['HOST'],
-            port=database['PORT'],
-            name=database['NAME'],
-        )
