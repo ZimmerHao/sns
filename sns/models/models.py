@@ -20,6 +20,7 @@ class Endpoint(db.Model):
     endpoint_arn: the amazon resouce name of the endpoint, this arn get from amazon.
     """
     __tablename__ = 'endpoint'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     device_type = db.Column(db.Integer)
@@ -40,8 +41,9 @@ class Topic(db.Model):
     are in the group.
     """
     __tablename__ = 'topic'
+
     id = db.Column(db.Integer, primary_key=True)
-    topic_name = db.Column(db.String(20), primary_key=True)
+    topic_name = db.Column(db.String(20))
     topic_lang = db.Column(db.String(20))
     topic_arn = db.Column(db.String(200), unique=True)
     is_active = db.Column(db.Boolean)
@@ -56,6 +58,7 @@ class TopicEndpoint(db.Model):
     one endpoint maybe in several topics.
     """
     __tablename__ = 'topic_endpoint'
+
     id = db.Column(db.Integer, primary_key=True)
     topic_id = db.Column(db.Integer, db.ForeignKey('topic.id'))
     endpoint_id = db.Column(db.Integer, db.ForeignKey('endpoint.id'))
